@@ -1,2 +1,2 @@
 # ArtificialIntelligenceGUI
-A Java project for UMGC coursework.
+Concept GUI for simulating AI interaction through themed responses.
