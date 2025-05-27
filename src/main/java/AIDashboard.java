@@ -45,7 +45,48 @@ public class AIDashboard extends Application {
         chkAIEnabled = new CheckBox("Enable AI Mode");
 
         btnPredict.setOnAction(e -> handlePredict());
-        btnAnalyze.setOnAction(e -> txtAIResponse.setText("Analysis functionality not implemented yet."));
+btnAnalyze.setOnAction(e -> {
+    String input = txtUserInput.getText().trim();
+    if (input.isEmpty()) {
+        txtAIResponse.setText("Please enter something to analyze.");
+        return;
+    }
+
+    if (chkAIEnabled.isSelected()) {
+        txtAIResponse.setText("AI-powered analysis is currently unavailable.\nTry disabling AI Mode for offline analysis.");
+        return;
+    }
+
+    StringBuilder analysis = new StringBuilder();
+    analysis.append("Analysis Results:\n");
+
+    // Word and character count
+    String[] words = input.split("\\s+");
+    int wordCount = words.length;
+    int charCount = input.replaceAll("\\s+", "").length();
+    analysis.append("- Word count: ").append(wordCount).append("\n");
+    analysis.append("- Character count (no spaces): ").append(charCount).append("\n");
+
+    // Sentiment
+    String lower = input.toLowerCase();
+    if (lower.contains("happy") || lower.contains("great") || lower.contains("love")) {
+        analysis.append("- Sentiment: Positive\n");
+    } else if (lower.contains("hate") || lower.contains("angry") || lower.contains("sad")) {
+        analysis.append("- Sentiment: Negative\n");
+    } else {
+        analysis.append("- Sentiment: Neutral\n");
+    }
+
+    // Other detections
+    if (input.matches("[-+*/().0-9 ]+")) {
+        analysis.append("- Detected possible math expression.\n");
+    }
+    if (input.endsWith("?")) {
+        analysis.append("- Detected question format.\n");
+    }
+
+    txtAIResponse.setText(analysis.toString());
+});
         btnReset.setOnAction(e -> {
             txtUserInput.clear();
             txtAIResponse.clear();
