@@ -14,9 +14,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class WikiIndexer {
+public class WikiIndex {
 
-    // Change these if you ever move the dataset
     private static final Path JSONL_PATH = Path.of("/Volumes/T7 Shield/wiki_pipeline/text/simplewiki.jsonl");
     private static final Path INDEX_PATH = Path.of("/Volumes/T7 Shield/wiki_pipeline/index/simplewiki_lucene");
 
@@ -42,7 +41,7 @@ public class WikiIndexer {
                 try {
                     obj = new JSONObject(line);
                 } catch (Exception e) {
-                    continue; // skip malformed lines safely
+                    continue; // skip malformed lines
                 }
 
                 String title = obj.optString("title", "").trim();
