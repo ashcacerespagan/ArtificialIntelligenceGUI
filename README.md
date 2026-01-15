@@ -21,14 +21,6 @@ I created this project as a creative interface mockup that explores what an AI a
 
 ---
 
-### 🖼️ Screenshots
-
-| Predict Mode | Analyze Mode | AI Fallback |
-|--------------|--------------|-------------|
-| ![predict](screenshots/predict.png) | ![analyze](screenshots/analyze.png) | ![fallback](screenshots/fallback.png) |
-
----
-
 ### 🛠️ Tech Stack
 
 - Java 21
